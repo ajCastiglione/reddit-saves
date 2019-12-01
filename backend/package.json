@@ -4,7 +4,7 @@
   "description": "API for reddit saves",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"nodemon index.js\" \"npm run client\"",
+    "dev": "concurrently \"nodemon index.js && set NODE_ENV=dev\" \"npm run client\"",
     "client": "npm start --prefix ../frontend"
   },
   "keywords": [

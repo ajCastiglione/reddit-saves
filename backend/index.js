@@ -6,7 +6,9 @@ const app = express();
 const base64 = require("base-64");
 const fetch = require("node-fetch");
 const port = process.env.PORT || 5000;
-require("./config/config.js");
+if (process.env.NODE_ENV === "dev") {
+  require("./config/config.js");
+}
 
 global.fetch = fetch;
 global.Headers = fetch.Headers;
