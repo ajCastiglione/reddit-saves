@@ -1,0 +1,4 @@
+const CLIENTID = process.env.REACT_APP_CLIENTID;
+const REDIRECTURL = process.env.REACT_APP_REDIRECTURL;
+
+export { CLIENTID, REDIRECTURL };

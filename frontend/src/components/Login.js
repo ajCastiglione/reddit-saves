@@ -12,8 +12,7 @@ export default class Login extends Component {
           className="App-link"
           href={link}
           target="_blank"
-          rel="noopener noreferrer"
-        >
+          rel="noopener noreferrer">
           Get Access Code
         </a>
       </section>
