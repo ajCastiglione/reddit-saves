@@ -30,6 +30,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.get("/", (req, res) => {
+  res.send("This is the index.js file");
+});
+
 app.post("/reddit/getaccesstoken", (req, res) => {
   let client = process.env.REACT_APP_CLIENTID;
   let secret = process.env.REACT_APP_CLIENTSECRET;
