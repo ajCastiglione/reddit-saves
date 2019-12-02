@@ -6,6 +6,7 @@ const app = express();
 const base64 = require("base-64");
 const fetch = require("node-fetch");
 const port = process.env.PORT || 5000;
+console.log(`Current ENV: ${process.env.NODE_ENV}`);
 if (process.env.NODE_ENV === "dev") {
   require("./config/config.js");
 }
@@ -41,7 +42,6 @@ app.post("/reddit/getaccesstoken", (req, res) => {
   let redirectUrl = req.body.redirecturl;
   let code = req.body.code;
   let redditApi = `https://www.reddit.com/api/v1/access_token?grant_type=authorization_code&code=${code}&redirect_uri=${redirectUrl}`;
-  console.log(redditApi);
   let headers = new Headers();
   headers.append("Authorization", `Basic ${base64.encode(formatted)}`);
 
@@ -56,16 +56,14 @@ app.post("/reddit/getaccesstoken", (req, res) => {
         data.access_token !== null
       ) {
         res.json({ access_token: data.access_token });
-        console.log(data);
       } else {
         res.status(400).send({ err: data });
-        console.log(data);
       }
     });
 });
 
 app.post("/me/getsaved", (req, res) => {
-  let characters = [];
+  let posts = [];
   const user = new snoowrap({
     userAgent:
       "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0",
@@ -98,6 +96,12 @@ app.post("/me/getsaved", (req, res) => {
       }
 
       res.send({ posts: formattedPosts });
+    })
+    .catch(() => {
+      res.status(403).send({
+        err:
+          "Unable to complete request. This is most likely due to an invalid access token. Please try signing in again!"
+      });
     });
 });
 

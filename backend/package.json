@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "concurrently \"nodemon index.js && set NODE_ENV=dev\" \"npm run client\"",
+    "dev": "concurrently \"export NODE_ENV=dev&&nodemon index.js\" \"npm run client\"",
     "client": "npm start --prefix ../frontend"
   },
   "keywords": [
