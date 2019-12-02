@@ -13,7 +13,7 @@ class App extends Component {
   };
 
   setToken = token => {
-    this.setState({ token });
+    this.setState({ token, authenticated: true });
   };
 
   isLoggedIn = () => {

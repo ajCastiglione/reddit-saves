@@ -18,12 +18,7 @@ export default class Login extends Component {
     return (
       <section className="login">
         <h1 className="component-title">Please sign in with Reddit:</h1>
-        <a
-          className="App-link"
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="App-link" href={link} rel="noopener noreferrer">
           login
         </a>
       </section>
